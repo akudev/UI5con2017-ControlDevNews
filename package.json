@@ -1,0 +1,13 @@
+{
+  "name": "UI5con2017",
+  "version": "1.0.0",
+  "description": "Create Your Own UI5 Controls – What’s Coming Up",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Andreas Kunz",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}

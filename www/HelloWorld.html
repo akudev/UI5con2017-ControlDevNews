@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta charset="utf-8">
+
+		<title>HelloWorld Example - UI5con 2017 - Create Your Own UI5 Controls – What’s Coming Up</title>
+
+		<script src="https://openui5nightly.hana.ondemand.com/resources/sap-ui-core.js" 
+			id="sap-ui-bootstrap"
+			data-sap-ui-libs="sap.m" 
+			data-sap-ui-theme="sap_belize"
+			data-sap-ui-resourceroots='{"control": "./control"}'></script>
+
+	</head>
+	
+	<script>
+		jQuery.sap.require("control.HelloWorld");
+		
+		var oHelloWorld = new control.HelloWorld({text : "Hello, MY World!"});
+		oHelloWorld.placeAt("content");
+	</script>
+
+	<body id="content" role="application" class="sapUiBody">
+		<h1>UI5con 2017 - Create Your Own UI5 Controls – What’s Coming Up</h1>
+		<h3>Example 1: Hello World</h3>
+	</body>
+</html>
