@@ -5,4 +5,4 @@ Code samples for the booth session "Create Your Own UI5 Controls – What’s Co
 Instructions:
 - npm install
 - npm start
-- Open http://localhost:8080/index.html
+- Open http://localhost:2017/index.html
