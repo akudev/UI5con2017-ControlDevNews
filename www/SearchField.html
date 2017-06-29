@@ -18,7 +18,7 @@
 		jQuery.sap.require("control.SearchField");
 		
 		var oSearchField = new control.SearchField({
-			placeholder: "Enter some text...",
+			buttonText: "Find",
 			search: function(oEvent) {
 				alert("Search term is: " + oEvent.getParameter("value"));
 			}
@@ -26,7 +26,7 @@
 		oSearchField.placeAt("content");
 	</script>
 
-	<body id="content" role="application" class="sapUiBody">
+	<body id="content" role="application" class="sapUiBody sapUiResponsiveMargin">
 		<h1>UI5con 2017 - Create Your Own UI5 Controls – What’s Coming Up</h1>
 		<h3>Example 2: a simple SearchField control</h3>
 	</body>

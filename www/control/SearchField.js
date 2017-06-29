@@ -6,7 +6,8 @@ sap.ui.define(
 	var oSearchField = FragmentControl.extend("control.SearchField", {
 		metadata: {
 			properties: {
-				placeholder: { type: "string", defaultValue: "Hello World" }
+				placeholder: { type: "string", defaultValue: "Enter Search Term..." },
+				buttonText: { type: "string", defaultValue: "Search" }
 			},
 			events: {
 				search: {
@@ -17,9 +18,9 @@ sap.ui.define(
 			}
 		},
 		
-		handleSearch: function() { // button was pressed, retrieve the current Input value
-			var sSearchString = sap.ui.getCore().byId(this.getId() + "--innerInput").getValue();   // should be and will be:  this.byId("innerInput").getValue();
-			this.fireEvent("search", {value: sSearchString}); // just forward the Input event's parameters
+		handleSearch: function() { // button was pressed, retrieve Input value + fire event
+			var sSearchString = this.byId("innerInput").getValue();
+			this.fireEvent("search", {value: sSearchString});
 		}
 	});
 	return oSearchField;
