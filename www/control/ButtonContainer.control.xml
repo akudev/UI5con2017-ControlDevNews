@@ -1,0 +1,6 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Panel headerText="This is a panel inside the ButtonContainer control" width="600px" expandable="true" expanded="true" backgroundDesign="Solid"
+		content="{$this>content}">
+		<Button press="handlePress" text="{$this>text}" /> <!-- for all controls given from the application into the "content" aggregation, one Button will be rendered in here, with the text bound to the "text" property of the outer control -->
+	</Panel>
+</core:FragmentDefinition>
