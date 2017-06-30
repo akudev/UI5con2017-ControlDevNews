@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta charset="utf-8">
+		
+		<title>ManagedObjectModel with aggregation - UI5con 2017 - Create Your Own UI5 Controls – What’s Coming Up</title>
+		
+		<script src="https://openui5nightly.hana.ondemand.com/resources/sap-ui-core.js" 
+			id="sap-ui-bootstrap"
+			data-sap-ui-libs="sap.m,sap.ui.layout" 
+			data-sap-ui-theme="sap_belize"
+			data-sap-ui-xx-bindingSyntax='complex'></script>
+		
+		<script>
+			// create some dummy JSON data and model to hold it
+			var data = {
+				names: [
+					{firstName: "Peter", lastName: "Mueller"},
+					{firstName: "Petra", lastName: "Maier"},
+					{firstName: "Thomas", lastName: "Smith"},
+					{firstName: "John", lastName: "Williams"},
+					{firstName: "Maria", lastName: "Jones"}
+				]
+			};
+			var model = new sap.ui.model.json.JSONModel();
+			model.setData(data);
+			
+
+			// create a List control
+			var oList = new sap.m.List({
+				headerText: "Names",
+				headerToolbar: new sap.m.Toolbar({
+					content: new sap.m.Button({
+						text: "Remove Item",
+						press: function() {
+							var aItems = oList.getItems();
+							oList.removeItem(aItems[aItems.length-1]);
+						}
+					})
+				})
+			});
+			oList.bindItems({
+				path : "/names", 
+				sorter : new sap.ui.model.Sorter("lastName"),
+				template : new sap.m.StandardListItem({
+					title: "{lastName}",
+					description: "{firstName}"
+				})
+			}).setModel(model);
+			
+			
+			// Interesting part!
+			
+			// now create a ManagedObjectModel for the List...
+			jQuery.sap.require("sap.ui.model.base.ManagedObjectModel");
+			var oManagedObjectModel = new sap.ui.model.base.ManagedObjectModel(oList);
+			
+			///... and a HorizontalLayout with Buttons reflecting the List items
+			var oHorizontalLayout = new sap.ui.layout.HorizontalLayout();
+			oHorizontalLayout.setModel(oManagedObjectModel, "listModel"); 
+			oHorizontalLayout.bindAggregation("content", { 
+				path: "listModel>/items", 
+				template: new sap.m.Button({text: "{listModel>title}"})
+			});
+				
+			
+			
+			// create the page holding the List and layout
+			oList.placeAt("content");
+			oHorizontalLayout.placeAt("content");
+			
+		</script>
+		
+	</head>
+	<body id="content" role="application" class="sapUiBody sapUiResponsiveMargin">
+		<h1>UI5con 2017 - Create Your Own UI5 Controls – What’s Coming Up</h1>
+		<h3>Example 6: ManagedObjectModel, with aggregation binding</h3>
+	</body>
+</html>
