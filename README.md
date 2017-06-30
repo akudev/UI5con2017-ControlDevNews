@@ -6,3 +6,5 @@ Instructions:
 - npm install
 - npm start
 - Open http://localhost:2017/index.html
+
+You can also run all samples directly from https://rawgit.com/akudev/UI5con2017-ControlDevNews/master/www/index.html
