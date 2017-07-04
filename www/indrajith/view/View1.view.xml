@@ -1,0 +1,32 @@
+<mvc:View controllerName="sap.iot.ui.component.consume.controller.View1" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:iot="sap.iot.ui.component.consume.fragments">
+	<App>
+		<pages>
+			<Page title="{i18n>title}">
+				<content>
+					<iot:thinglist text="IoT" things = "{path:'/collection'}">
+	<iot:mycolumns>
+	<Column>
+	<Text text = "First Name"/>
+	</Column>
+	<Column>
+	<Text text = "Last Name"/>
+	</Column>
+	<Column>
+	<Text text = "Country"/>
+	</Column>
+	</iot:mycolumns>
+	<iot:things>
+	<ColumnListItem><cells>
+					<Text text="{fname}" />
+					<Text text="{lname}" />
+					<Text text="{country}" />
+				</cells>
+			</ColumnListItem>
+	</iot:things>
+</iot:thinglist>
+			</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
