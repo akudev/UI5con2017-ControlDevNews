@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta charset="utf-8">
+		
+		<title>ManagedObjectModel in a plain Composite Control - UI5con 2017 - Create Your Own UI5 Controls – What’s Coming Up</title>
+		
+		<script id='sap-ui-bootstrap' type='text/javascript'
+				src='https://openui5nightly.hana.ondemand.com/resources/sap-ui-core.js'
+				data-sap-ui-libs="sap.m"
+				data-sap-ui-theme="sap_belize"
+				></script> 
+			
+		<script>
+
+			// PART 1: define new control type "my.Square"
+
+			sap.ui.core.Control.extend("my.Square", {
+
+				// the control API:
+				metadata : {
+					properties : {
+						"text" : "string",
+						"size" : {type: "sap.ui.core.CSSSize", defaultValue: "800px"}
+					}, 
+					events: {
+						press: "press"
+					}, 
+					aggregations: {
+						content: {
+							type: "sap.ui.core.Control" // allow any number of controls inside the square
+						},
+						_panel: {
+							type: "sap.m.Panel",
+							multiple: false
+						}
+					}
+
+				},
+
+
+				// HERE is the forwarding magic!
+
+				init: function() {
+					jQuery.sap.require("sap.ui.model.base.ManagedObjectModel"); // yes, I know
+					jQuery.sap.require("sap.ui.core.FragmentProxy");
+
+					// ManagedObjectModel allows inner controls to be bound to the composite control API
+					var oManagedObjectModel = new sap.ui.model.base.ManagedObjectModel(this);
+					window.oManagedObjectModel = oManagedObjectModel;
+					this.setModel(oManagedObjectModel, "$this");
+
+					var oPanel = new sap.m.Panel({
+						headerText: "{$this>/text}",  // bind the Panel header text to the Square's "text" property
+						content: {                    // forward the Square's content to the inner Panel's content
+							path: "$this>/content",
+							template: new sap.ui.core.FragmentProxy({})
+						},
+						expandable: true,
+						expanded: true
+					});
+
+					this.setAggregation("_panel", oPanel);
+				},
+
+
+
+				// the part creating the HTML:
+				renderer : function(oRm, oControl) {
+					oRm.write("<div"); 
+					oRm.writeControlData(oControl);
+					oRm.addStyle("width", oControl.getSize());
+					oRm.addStyle("height", oControl.getSize());
+					oRm.writeStyles();
+					oRm.addClass("mySquare");
+					oRm.writeClasses();
+					oRm.write(">");
+
+					oRm.renderControl(oControl.getAggregation("_panel")); // render the inner Panel, which also get all of Square's content
+
+					oRm.write("</div>");
+				},
+
+				onclick : function(evt) {   // is called when the Control's area is clicked - no event registration required
+					this.firePress();
+				}
+
+			});
+
+
+
+			// PART 2: instantiate Control and place it onto the page
+
+			new my.Square({
+				text:"This is my Square", 
+				size: "600px",
+				content: [
+					new sap.m.Button({text: "A Button from outside"}),
+					new sap.m.Button({text: "Another Button"})
+				]
+			}).placeAt("content");
+
+		</script>
+
+
+
+		<style>
+			/* PART 3: the style for all Square control instances */
+
+			.mySquare {
+				border: 1px solid red;
+				background-color: #ddd;
+				padding: 8px;
+				box-sizing: border-box;
+			}
+		</style>
+		
+	</head>
+	<body id="content" role="application" class="sapUiBody sapUiResponsiveMargin">
+		<h1>UI5con 2017 - Create Your Own UI5 Controls – What’s Coming Up</h1>
+		<h3>Example 7: ManagedObjectModel in a plain Composite Control (not a FragmentControl)</h3>
+	</body>
+</html>
