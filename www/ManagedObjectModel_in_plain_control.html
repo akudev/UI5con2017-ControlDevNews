@@ -54,7 +54,7 @@
 						headerText: "{$this>/text}",  // bind the Panel header text to the Square's "text" property
 						content: {                    // forward the Square's content to the inner Panel's content
 							path: "$this>/content",
-							template: new sap.ui.core.FragmentProxy({})
+							template: new sap.ui.core.FragmentProxy()
 						},
 						expandable: true,
 						expanded: true
@@ -118,6 +118,6 @@
 	</head>
 	<body id="content" role="application" class="sapUiBody sapUiResponsiveMargin">
 		<h1>UI5con 2017 - Create Your Own UI5 Controls – What’s Coming Up</h1>
-		<h3>Example 7: ManagedObjectModel in a plain Composite Control (not a FragmentControl)</h3>
+		<h3>Example 7: ManagedObjectModel in a plain Composite Control (not an XMLComposite)</h3>
 	</body>
 </html>

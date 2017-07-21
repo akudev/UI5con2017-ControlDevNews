@@ -1,9 +1,9 @@
 sap.ui.define(
-		['jquery.sap.global', 'sap/ui/core/FragmentControl'],
-		function (jQuery, FragmentControl) {
+		['jquery.sap.global', 'sap/ui/core/XMLComposite'],
+		function (jQuery, XMLComposite) {
 	"use strict";
 	
-	var oSearchField = FragmentControl.extend("control.SearchField", {
+	var oSearchField = XMLComposite.extend("control.SearchField", {
 		metadata: {
 			properties: {
 				placeholder: { type: "string", defaultValue: "Enter Search Term..." },

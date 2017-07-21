@@ -1,6 +1,28 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
-	<Panel headerText="This is a panel inside the GenericContainer control" width="600px" expandable="true" expanded="true" backgroundDesign="Solid"
-		content="{$this>content}">
-		<core:FragmentProxy/> <!-- whatever control is given from the application into the "content" aggregation, will be rendered in here -->
+	<Panel>
+		<Panel headerText="This is a panel inside the GenericContainer control" width="600px" expandable="true" expanded="true" backgroundDesign="Solid"
+			content="{$this>content}">
+			<core:FragmentProxy/> <!-- whatever control is given from the application into the "content" aggregation, will be rendered in here -->
+		</Panel>
+		<Panel headerText="This is a panel inside the GenericContainer control" width="600px" expandable="true" expanded="true" backgroundDesign="Solid"
+			content="{$this>content}">
+			<core:FragmentProxy/> <!-- whatever control is given from the application into the "content" aggregation, will be rendered in here -->
+		</Panel>
+		<Panel headerText="This is a panel inside the GenericContainer control" width="600px" expandable="true" expanded="true" backgroundDesign="Solid"
+			content="{$this>content}">
+			<core:FragmentProxy/> <!-- whatever control is given from the application into the "content" aggregation, will be rendered in here -->
+		</Panel>
+		<Panel headerText="This is a panel inside the GenericContainer control" width="600px" expandable="true" expanded="true" backgroundDesign="Solid"
+			content="{$this>content}">
+			<core:FragmentProxy/> <!-- whatever control is given from the application into the "content" aggregation, will be rendered in here -->
+		</Panel>
+		<Panel headerText="This is a panel inside the GenericContainer control" width="600px" expandable="true" expanded="true" backgroundDesign="Solid"
+			content="{$this>content}">
+			<core:FragmentProxy/> <!-- whatever control is given from the application into the "content" aggregation, will be rendered in here -->
+		</Panel>
+		<Panel headerText="This is a panel inside the GenericContainer control" width="600px" expandable="true" expanded="true" backgroundDesign="Solid"
+			content="{$this>content}">
+			<core:FragmentProxy/> <!-- whatever control is given from the application into the "content" aggregation, will be rendered in here -->
+		</Panel>
 	</Panel>
 </core:FragmentDefinition>

@@ -2,6 +2,9 @@
 
 Code samples for the booth session "Create Your Own UI5 Controls – What’s Coming Up" at UI5con@SAP 2017
 
+Content:
+New features for UI5 control development, in particular: the new XMLComposite (formerly: FragmentControl) concept and the ManagedObjectModel.
+
 Instructions:
 - npm install
 - npm start

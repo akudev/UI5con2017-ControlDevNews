@@ -1,9 +1,9 @@
 sap.ui.define(
-		['jquery.sap.global', 'sap/ui/core/FragmentControl'],
-		function (jQuery, FragmentControl) {
+		['jquery.sap.global', 'sap/ui/core/XMLComposite'],
+		function (jQuery, XMLComposite) {
 	"use strict";
 	
-	var oGenericContainer = FragmentControl.extend("control.GenericContainer", {
+	var oGenericContainer = XMLComposite.extend("control.GenericContainer", {
 		metadata: {
 			aggregations: {
 				content: {

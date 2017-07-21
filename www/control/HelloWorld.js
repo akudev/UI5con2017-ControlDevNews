@@ -1,9 +1,9 @@
 sap.ui.define(
-		['jquery.sap.global', 'sap/ui/core/FragmentControl'],
-		function (jQuery, FragmentControl) {
+		['jquery.sap.global', 'sap/ui/core/XMLComposite'],
+		function (jQuery, XMLComposite) {
 	"use strict";
 	
-	var HelloWorld = FragmentControl.extend("control.HelloWorld", {
+	var HelloWorld = XMLComposite.extend("control.HelloWorld", {
 		metadata: {
 			properties: {
 				text: { type: "string", defaultValue: "Hello World" }
