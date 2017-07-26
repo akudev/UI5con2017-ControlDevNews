@@ -43,8 +43,8 @@
 				// HERE is the forwarding magic!
 
 				init: function() {
-					jQuery.sap.require("sap.ui.model.base.ManagedObjectModel"); // yes, I know
-					jQuery.sap.require("sap.ui.core.FragmentProxy");
+					jQuery.sap.require("sap.ui.model.base.ManagedObjectModel"); // yes, I know... sync requires are discouraged - but make this basic example simpler
+					jQuery.sap.require("sap.ui.core.AggregationProxy");
 
 					// ManagedObjectModel allows inner controls to be bound to the composite control API
 					var oManagedObjectModel = new sap.ui.model.base.ManagedObjectModel(this);
@@ -54,7 +54,7 @@
 						headerText: "{$this>/text}",  // bind the Panel header text to the Square's "text" property
 						content: {                    // forward the Square's content to the inner Panel's content
 							path: "$this>/content",
-							template: new sap.ui.core.FragmentProxy()
+							template: new sap.ui.core.AggregationProxy()
 						},
 						expandable: true,
 						expanded: true
@@ -93,7 +93,7 @@
 
 			new my.Square({
 				text:"This is my Square", 
-				size: "600px",
+				size: "300px",
 				content: [
 					new sap.m.Button({text: "A Button from outside"}),
 					new sap.m.Button({text: "Another Button"})
